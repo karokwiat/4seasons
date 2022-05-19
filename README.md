@@ -1,0 +1,1 @@
+- React Native, React Navigation v6, TypeScript, Firebase
