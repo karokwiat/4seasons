@@ -17,6 +17,7 @@ import RecipesOverviewScreen from "./screens/RecipesOverviewScreen";
 import RecipeDetailScreen from "./screens/RecipeDetailScreen";
 import { store } from "./store/redux/store";
 import FavoritesScreen from "./screens/FavoritesScreen";
+import ShoppingListScreen from "./screens/ShoppingListScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator();
@@ -53,6 +54,16 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="star" color={color} size={size} />
           ),
+        }}
+      />
+      <BottomTab.Screen
+        name="ShoppingList"
+        component={ShoppingListScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="list" color={color} size={size} />
+          ),
+          headerShown: false,
         }}
       />
     </BottomTab.Navigator>
