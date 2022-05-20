@@ -2,8 +2,8 @@ import { FC, useContext, useState } from "react";
 import { Alert } from "react-native";
 
 import AuthContent from "../components/Auth/AuthContent";
-import LoadingOverlay from "../components/ui/LoadingOverlay";
-import { AuthContext } from "../store/auth-context";
+import LoadingOverlay from "../components/UI/LoadingOverlay";
+import { AuthContext } from "../store/context/auth-context";
 import { login } from "../util/auth";
 
 type Props = {

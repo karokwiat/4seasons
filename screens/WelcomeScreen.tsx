@@ -2,7 +2,7 @@ import axios from "axios";
 import { FC, useContext, useEffect, useState } from "react";
 
 import { StyleSheet, Text, View } from "react-native";
-import { AuthContext } from "../store/auth-context";
+import { AuthContext } from "../store/context/auth-context";
 
 import AuthContent from "../components/Auth/AuthContent";
 

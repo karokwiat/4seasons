@@ -3,7 +3,7 @@ import { Alert, StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-import FlatButton from "../ui/FlatButton";
+import FlatButton from "../UI/FlatButton";
 import AuthForm from "./AuthForm";
 import { DefaultTheme } from "../../assets/styles/theme";
 import { RootStackParamList } from "../../types/RootStackParams";

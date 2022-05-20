@@ -1,7 +1,7 @@
 import * as SecureStore from "expo-secure-store";
 
 import { createContext, useState } from "react";
-import { AuthValue } from "../types/AuthValue";
+import { AuthValue } from "../../types/AuthValue";
 
 export const AuthContext = createContext({
   token: "",
