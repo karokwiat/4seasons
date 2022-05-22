@@ -1,26 +1,45 @@
+import { FC } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { DefaultTheme } from "../../../assets/styles/theme";
+import IconButton from "../../UI/IconButton";
 
-function List({ data }) {
+type Props = {
+  data: string[];
+  icon: string;
+};
+
+const List: FC<Props> = ({ data, icon }) => {
   return data.map((dataPoint) => (
     <View key={dataPoint} style={styles.listItem}>
       <Text style={styles.itemText}>{dataPoint}</Text>
+      <IconButton
+        icon={icon}
+        color={DefaultTheme.colors.primary}
+        size={24}
+        onPress={() => console.log("add me to the shopping list")}
+      />
     </View>
   ));
-}
+};
 
 export default List;
 
 const styles = StyleSheet.create({
   listItem: {
-    borderRadius: 6,
-    paddingHorizontal: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderRadius: 12,
+    paddingHorizontal: 12,
     paddingVertical: 4,
     marginVertical: 4,
     marginHorizontal: 12,
-    backgroundColor: "#e2b497",
+    backgroundColor: DefaultTheme.colors.lightGrey,
   },
   itemText: {
-    color: "#351401",
-    textAlign: "center",
+    width: "80%",
+    color: DefaultTheme.colors.black,
+    textAlign: "left",
+    padding: 8,
   },
 });

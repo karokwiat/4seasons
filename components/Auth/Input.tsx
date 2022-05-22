@@ -45,11 +45,11 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   label: {
-    color: "white",
+    color: DefaultTheme.colors.black,
     marginBottom: 4,
   },
   labelInvalid: {
-    color: DefaultTheme.colors.error500,
+    color: DefaultTheme.colors.primary,
   },
   input: {
     paddingVertical: 8,
@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   inputInvalid: {
-    backgroundColor: DefaultTheme.colors.error100,
+    backgroundColor: DefaultTheme.colors.background,
   },
 });

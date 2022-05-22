@@ -1,13 +1,14 @@
 export const DefaultTheme = {
   colors: {
-    background: "#E8EAED",
-    header: "#f5f5f5",
-    black: "#1c1c1c",
-    primary: "#0782F9",
-    error100: "#fcdcbf",
-    error500: "#f37c13",
+    background: "#FFFFFF",
+    header: "#DFE9FE",
+    black: "#072340",
+    primary: "#FC7960",
+    error100: "#FFD1C9",
     white: "#FFF",
-    borderGrey: "#C0C0C0",
-    lightBlue: "#55BCF6",
+    borderGrey: "#A4B0BF",
+    lightBlue: "#DFE9FE",
+    lightGrey: "#F6F6F6",
+    inactive: "#E4E6EC",
   },
 };

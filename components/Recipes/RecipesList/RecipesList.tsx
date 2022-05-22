@@ -1,4 +1,5 @@
 import { View, FlatList, StyleSheet } from "react-native";
+import { DefaultTheme } from "../../../assets/styles/theme";
 
 import RecipeItem from "./RecipeItem";
 
@@ -33,6 +34,7 @@ export default RecipesList;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    paddingHorizontal: 16,
+    backgroundColor: DefaultTheme.colors.background,
   },
 });

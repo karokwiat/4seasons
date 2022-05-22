@@ -18,7 +18,7 @@ import RecipeDetailScreen from "./screens/RecipeDetailScreen";
 import { store } from "./store/redux/store";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import ShoppingListScreen from "./screens/ShoppingListScreen";
-import WelcomeScreen from "./screens/WelcomeScreen";
+import { Lora_400Regular } from "@expo-google-fonts/lora";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator();
@@ -28,9 +28,13 @@ function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       screenOptions={{
+        headerTintColor: DefaultTheme.colors.black,
+        tabBarActiveTintColor: DefaultTheme.colors.primary,
+        tabBarInactiveTintColor: DefaultTheme.colors.inactive,
+        headerTitleStyle: { fontFamily: "Georgia", fontSize: 20 },
         headerRight: ({ tintColor }) => (
           <IconButton
-            icon="exit"
+            icon="exit-outline"
             color={tintColor}
             size={24}
             onPress={authCtx.logout}
@@ -39,21 +43,24 @@ function BottomTabNavigator() {
       }}
     >
       <BottomTab.Screen
-        name="Recipes"
-        component={RecipesOverviewScreen}
+        name="RecipeStack"
+        component={RecipeStackNavigator}
         options={{
           title: "Recipes",
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="book" color={color} size={size} />
           ),
         }}
       />
       <BottomTab.Screen
-        name="Favorites"
-        component={FavoritesScreen}
+        name="FavoritesStack"
+        component={FavoriteStackNavigator}
         options={{
+          title: "My favorites",
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="star" color={color} size={size} />
+            <Ionicons name="bookmark" color={color} size={size} />
           ),
         }}
       />
@@ -61,13 +68,101 @@ function BottomTabNavigator() {
         name="ShoppingList"
         component={ShoppingListScreen}
         options={{
+          title: "Shopping List",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="list" color={color} size={size} />
           ),
-          headerShown: false,
+        }}
+      />
+      <BottomTab.Screen
+        name="RecipeDetail"
+        component={RecipeDetailScreen}
+        options={{
+          tabBarItemStyle: { display: "none" },
         }}
       />
     </BottomTab.Navigator>
+  );
+}
+
+function RecipeStackNavigator() {
+  const authCtx = useContext(AuthContext);
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: DefaultTheme.colors.black,
+        contentStyle: { backgroundColor: DefaultTheme.colors.background },
+        headerTitleStyle: {
+          fontFamily: "Georgia",
+          fontSize: 20,
+          fontWeight: "bold",
+        },
+      }}
+    >
+      <Stack.Screen
+        name="RecipesOverview"
+        component={RecipesOverviewScreen}
+        options={{
+          title: "Recipes",
+          headerRight: ({ tintColor }) => (
+            <IconButton
+              icon="exit-outline"
+              color={tintColor}
+              size={24}
+              onPress={authCtx.logout}
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="RecipeDetail"
+        component={RecipeDetailScreen}
+        options={{
+          title: "About the Meal",
+          headerBackTitleVisible: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function FavoriteStackNavigator() {
+  const authCtx = useContext(AuthContext);
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: DefaultTheme.colors.black,
+        contentStyle: { backgroundColor: DefaultTheme.colors.background },
+        headerTitleStyle: {
+          fontFamily: "Georgia",
+          fontSize: 20,
+          fontWeight: "bold",
+        },
+      }}
+    >
+      <Stack.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{
+          headerRight: ({ tintColor }) => (
+            <IconButton
+              icon="exit-outline"
+              color={tintColor}
+              size={24}
+              onPress={authCtx.logout}
+            />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="RecipeDetail"
+        component={RecipeDetailScreen}
+        options={{
+          title: "About the Meal",
+          headerBackTitleVisible: false,
+        }}
+      />
+    </Stack.Navigator>
   );
 }
 
@@ -86,12 +181,11 @@ function AuthStack() {
 }
 
 function AuthenticatedStack() {
-  // const authCtx = useContext(AuthContext);
   return (
     <Stack.Navigator
       screenOptions={{
         headerStyle: { backgroundColor: DefaultTheme.colors.header },
-        headerTintColor: "black",
+        headerTintColor: DefaultTheme.colors.black,
         contentStyle: { backgroundColor: DefaultTheme.colors.background },
       }}
     >
@@ -100,13 +194,6 @@ function AuthenticatedStack() {
         component={BottomTabNavigator}
         options={{
           headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="RecipeDetail"
-        component={RecipeDetailScreen}
-        options={{
-          title: "About the Meal",
         }}
       />
     </Stack.Navigator>

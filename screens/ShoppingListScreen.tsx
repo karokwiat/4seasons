@@ -64,7 +64,7 @@ function ShoppingListScreen() {
       >
         {/* Items */}
         <View style={styles.itemsWrapper}>
-          <Text style={styles.sectionTitle}>Shopping List</Text>
+          {/* <Text style={styles.sectionTitle}>Shopping List</Text> */}
           <View style={styles.items}>
             {/* This is where the items will go! */}
             {itemsList.map((item, index) => {
@@ -102,14 +102,14 @@ const styles = StyleSheet.create({
     backgroundColor: DefaultTheme.colors.background,
   },
   itemsWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
+    // paddingTop: 10,
+    paddingHorizontal: 30,
   },
   sectionTitle: {
     fontSize: 24,
     fontWeight: "bold",
   },
   items: {
-    marginTop: 30,
+    marginTop: 20,
   },
 });
