@@ -1,11 +1,12 @@
 import React, { FC } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { DefaultTheme } from "../../assets/styles/theme";
 
 type Props = {
   text: string;
 };
 
-const Task: FC<Props> = ({ text }) => {
+const Item: FC<Props> = ({ text }) => {
   return (
     <View style={styles.item}>
       <View style={styles.itemLeft}>
@@ -19,7 +20,7 @@ const Task: FC<Props> = ({ text }) => {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: "#FFF",
+    backgroundColor: DefaultTheme.colors.white,
     padding: 15,
     borderRadius: 10,
     flexDirection: "row",
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
   square: {
     width: 24,
     height: 24,
-    backgroundColor: "#55BCF6",
+    backgroundColor: DefaultTheme.colors.lightBlue,
     opacity: 0.4,
     borderRadius: 5,
     marginRight: 15,
@@ -46,10 +47,10 @@ const styles = StyleSheet.create({
   circular: {
     width: 12,
     height: 12,
-    borderColor: "#55BCF6",
+    borderColor: DefaultTheme.colors.lightBlue,
     borderWidth: 2,
     borderRadius: 5,
   },
 });
 
-export default Task;
+export default Item;

@@ -16,6 +16,8 @@ const WelcomeScreen: FC<Props> = () => {
   const authCtx = useContext(AuthContext);
   const token = authCtx.token;
 
+  console.log(token);
+
   useEffect(() => {
     axios
       .get(

@@ -18,6 +18,7 @@ import RecipeDetailScreen from "./screens/RecipeDetailScreen";
 import { store } from "./store/redux/store";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import ShoppingListScreen from "./screens/ShoppingListScreen";
+import WelcomeScreen from "./screens/WelcomeScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator();
