@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: "center",
-    color: DefaultTheme.colors.background,
+    color: DefaultTheme.colors.black,
   },
 });

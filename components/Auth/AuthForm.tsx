@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { StyleSheet, View } from "react-native";
+import { DefaultTheme } from "../../assets/styles/theme";
 
 import Button from "../UI/Button";
 import Input from "./Input";

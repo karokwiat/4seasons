@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ShoppingItem } from "../types/ShoppingItem";
+// import { ShoppingItem } from "../types/ShoppingItem";
 
 const BACKEND_URL =
   "https://cook-app-b49c2-default-rtdb.europe-west1.firebasedatabase.app/";

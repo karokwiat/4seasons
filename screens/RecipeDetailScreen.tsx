@@ -10,8 +10,9 @@ import RecipeDetails from "../components/Recipes/RecipeDetails";
 import { MEALS } from "../data/dummy-data";
 import { addFavorite, removeFavorite } from "../store/redux/favorites";
 import { RootStackParamList } from "../types/RootStackParams";
+import { DefaultTheme } from "../assets/styles/theme";
 
-type Props = NativeStackScreenProps<RootStackParamList, "RecipesOverview">;
+type Props = NativeStackScreenProps<RootStackParamList, "Favorites">;
 
 function RecipeDetailScreen({ route, navigation }: Props) {
   const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids);
@@ -22,32 +23,42 @@ function RecipeDetailScreen({ route, navigation }: Props) {
 
   const mealIsFavorite = favoriteMealIds.includes(mealId);
 
-  function changeFavoriteStatusHandler() {
+  const changeFavoriteStatusHandler = () => {
     if (mealIsFavorite) {
       dispatch(removeFavorite({ id: mealId }));
     } else {
       dispatch(addFavorite({ id: mealId }));
     }
-  }
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
         return (
           <IconButton
-            icon={mealIsFavorite ? "star" : "star-outline"}
+            icon={mealIsFavorite ? "bookmark" : "bookmark-outline"}
             color="black"
             onPress={changeFavoriteStatusHandler}
+            size={24}
           />
         );
       },
     });
   }, [navigation, changeFavoriteStatusHandler]);
 
+  // let IngredientAddedToTheShoppingList = false;
+
+  // const changeIngredientStatus = () => {
+  //   IngredientAddedToTheShoppingList = !IngredientAddedToTheShoppingList;
+  //   console.log(IngredientAddedToTheShoppingList);
+  // };
+
   return (
     <ScrollView style={styles.rootContainer}>
       <Image style={styles.image} source={{ uri: selectedMeal.imageUrl }} />
-      <Text style={styles.title}>{selectedMeal.title}</Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>{selectedMeal.title}</Text>
+      </View>
       <RecipeDetails
         duration={selectedMeal.duration}
         complexity={selectedMeal.complexity}
@@ -57,9 +68,9 @@ function RecipeDetailScreen({ route, navigation }: Props) {
       <View style={styles.listOuterContainer}>
         <View style={styles.listContainer}>
           <Subtitle>Ingredients</Subtitle>
-          <List data={selectedMeal.ingredients} />
+          <List data={selectedMeal.ingredients} icon="add-circle" />
           <Subtitle>Steps</Subtitle>
-          <List data={selectedMeal.steps} />
+          <List data={selectedMeal.steps} icon="checkmark" />
         </View>
       </View>
     </ScrollView>
@@ -76,12 +87,17 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 350,
   },
+  titleContainer: {
+    backgroundColor: DefaultTheme.colors.lightBlue,
+    padding: 12,
+  },
   title: {
     fontWeight: "bold",
     fontSize: 24,
     margin: 8,
     textAlign: "center",
-    color: "white",
+    color: DefaultTheme.colors.black,
+    fontFamily: "Georgia",
   },
   detailText: {
     color: "white",
@@ -90,6 +106,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   listContainer: {
-    width: "80%",
+    width: "90%",
   },
 });

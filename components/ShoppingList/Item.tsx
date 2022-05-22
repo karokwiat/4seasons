@@ -13,16 +13,18 @@ const Item: FC<Props> = ({ text }) => {
         <View style={styles.square}></View>
         <Text style={styles.itemText}>{text}</Text>
       </View>
-      <View style={styles.circular}></View>
+      {/* <View style={styles.circular}></View> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: DefaultTheme.colors.white,
+    backgroundColor: DefaultTheme.colors.background,
+    borderRadius: 60,
+    borderColor: DefaultTheme.colors.borderGrey,
+    borderWidth: 1,
     padding: 15,
-    borderRadius: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -34,11 +36,11 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   square: {
-    width: 24,
-    height: 24,
-    backgroundColor: DefaultTheme.colors.lightBlue,
-    opacity: 0.4,
-    borderRadius: 5,
+    width: 12,
+    height: 12,
+    borderColor: DefaultTheme.colors.primary,
+    borderWidth: 2,
+    borderRadius: 15,
     marginRight: 15,
   },
   itemText: {
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
   circular: {
     width: 12,
     height: 12,
-    borderColor: DefaultTheme.colors.lightBlue,
+    borderColor: DefaultTheme.colors.primary,
     borderWidth: 2,
     borderRadius: 5,
   },

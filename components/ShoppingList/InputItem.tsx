@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   input: {
     paddingVertical: 15,
     paddingHorizontal: 15,
-    backgroundColor: DefaultTheme.colors.white,
+    backgroundColor: DefaultTheme.colors.background,
     borderRadius: 60,
     borderColor: DefaultTheme.colors.borderGrey,
     borderWidth: 1,
@@ -65,14 +65,17 @@ const styles = StyleSheet.create({
   addWrapper: {
     width: 60,
     height: 60,
-    backgroundColor: DefaultTheme.colors.white,
+    backgroundColor: DefaultTheme.colors.primary,
     borderRadius: 60,
     justifyContent: "center",
     alignItems: "center",
-    borderColor: DefaultTheme.colors.borderGrey,
-    borderWidth: 1,
+    // borderColor: DefaultTheme.colors.borderGrey,
+    // borderWidth: 1,
   },
-  addText: {},
+  addText: {
+    color: DefaultTheme.colors.background,
+    fontSize: 20,
+  },
 });
 
 export default InputItem;

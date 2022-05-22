@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
+import { DefaultTheme } from "../assets/styles/theme";
 
 import RecipesList from "../components/Recipes/RecipesList/RecipesList";
 import { MEALS } from "../data/dummy-data";
@@ -29,10 +30,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: DefaultTheme.colors.background,
   },
   text: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "white",
+    color: DefaultTheme.colors.black,
   },
 });

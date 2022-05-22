@@ -25,22 +25,24 @@ export default Button;
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 6,
+    borderRadius: 12,
     paddingVertical: 6,
     paddingHorizontal: 12,
-    backgroundColor: DefaultTheme.colors.header,
-    elevation: 2,
-    shadowColor: "grey",
-    shadowOffset: { width: 1, height: 1 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
+    backgroundColor: DefaultTheme.colors.primary,
+    borderColor: DefaultTheme.colors.background,
+    borderWidth: 1,
+    // elevation: 2,
+    // shadowColor: "grey",
+    // shadowOffset: { width: 1, height: 1 },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 4,
   },
   pressed: {
     opacity: 0.7,
   },
   buttonText: {
     textAlign: "center",
-    color: DefaultTheme.colors.primary,
+    color: DefaultTheme.colors.background,
     fontSize: 16,
     fontWeight: "bold",
   },
