@@ -31,7 +31,10 @@ function BottomTabNavigator() {
         headerTintColor: DefaultTheme.colors.black,
         tabBarActiveTintColor: DefaultTheme.colors.primary,
         tabBarInactiveTintColor: DefaultTheme.colors.inactive,
-        headerTitleStyle: { fontFamily: "Georgia", fontSize: 20 },
+        headerTitleStyle: {
+          fontFamily: DefaultTheme.fontFamily.regularHeaders,
+          fontSize: 20,
+        },
         headerRight: ({ tintColor }) => (
           <IconButton
             icon="exit-outline"
@@ -134,7 +137,7 @@ function FavoriteStackNavigator() {
         headerTintColor: DefaultTheme.colors.black,
         contentStyle: { backgroundColor: DefaultTheme.colors.background },
         headerTitleStyle: {
-          fontFamily: "Georgia",
+          fontFamily: DefaultTheme.fontFamily.regularHeaders,
           fontSize: 20,
           fontWeight: "bold",
         },

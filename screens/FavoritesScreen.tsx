@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
+    fontFamily: DefaultTheme.fontFamily.regularHeaders,
     fontWeight: "bold",
     color: DefaultTheme.colors.black,
   },

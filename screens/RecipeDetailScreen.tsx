@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     margin: 8,
     textAlign: "center",
     color: DefaultTheme.colors.black,
-    fontFamily: "Georgia",
+    fontFamily: DefaultTheme.fontFamily.regularHeaders,
   },
   detailText: {
     color: "white",
