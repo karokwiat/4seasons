@@ -13,7 +13,7 @@ export default Subtitle;
 
 const styles = StyleSheet.create({
   subtitle: {
-    fontFamily: "Georgia",
+    fontFamily: DefaultTheme.fontFamily.regularHeaders,
     color: DefaultTheme.colors.black,
     fontSize: 18,
     fontWeight: "bold",

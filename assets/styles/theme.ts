@@ -11,4 +11,7 @@ export const DefaultTheme = {
     lightGrey: "#F6F6F6",
     inactive: "#E4E6EC",
   },
+  fontFamily: {
+    regularHeaders: "Georgia",
+  },
 };
