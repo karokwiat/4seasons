@@ -66,7 +66,6 @@ function ShoppingListScreen() {
         <View style={styles.itemsWrapper}>
           {/* <Text style={styles.sectionTitle}>Shopping List</Text> */}
           <View style={styles.items}>
-            {/* This is where the items will go! */}
             {itemsList.map((item, index) => {
               return (
                 <TouchableOpacity

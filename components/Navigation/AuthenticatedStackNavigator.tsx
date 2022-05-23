@@ -1,0 +1,29 @@
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import { DefaultTheme } from "../../assets/styles/theme";
+import { RootStackParamList } from "../../types/RootStackParams";
+import BottomTabNavigator from "./BottomTabNavigator";
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+function AuthenticatedStackNavigator() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: DefaultTheme.colors.header },
+        headerTintColor: DefaultTheme.colors.black,
+        contentStyle: { backgroundColor: DefaultTheme.colors.background },
+      }}
+    >
+      <Stack.Screen
+        name="BottomTab"
+        component={BottomTabNavigator}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+export default AuthenticatedStackNavigator;

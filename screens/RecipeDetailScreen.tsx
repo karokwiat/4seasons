@@ -80,9 +80,7 @@ function RecipeDetailScreen({ route, navigation }: Props) {
 export default RecipeDetailScreen;
 
 const styles = StyleSheet.create({
-  rootContainer: {
-    marginBottom: 32,
-  },
+  rootContainer: {},
   image: {
     width: "100%",
     height: 350,

@@ -114,7 +114,7 @@ export const MEALS = [
       "2 large eggs, separated",
       "⅓ cup (50 g) all-purpose flour",
       "½ cup(120 ml) buttermilk",
-      "1 tablespoon honey",
+      "1 tbs honey",
       "pinch of salt",
       "1 tablespoon ghee",
       "200 g strawberries",
