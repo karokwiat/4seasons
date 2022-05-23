@@ -10,6 +10,8 @@ import { useNavigation } from "@react-navigation/native";
 
 import RecipeDetails from "../RecipeDetails";
 import { DefaultTheme } from "../../../assets/styles/theme";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 
 function RecipeItem({
   id,
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 8,
     left: 8,
-    fontFamily: "Georgia",
+    fontFamily: DefaultTheme.fontFamily.boldHeaders,
     fontWeight: "bold",
     color: DefaultTheme.colors.background,
     textAlign: "left",
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 6,
     right: 8,
-    fontFamily: "Georgia",
+    fontFamily: DefaultTheme.fontFamily.boldHeaders,
     fontWeight: "bold",
     color: DefaultTheme.colors.background,
     textAlign: "right",

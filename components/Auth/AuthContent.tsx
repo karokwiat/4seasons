@@ -1,5 +1,11 @@
 import { FC, useState } from "react";
-import { Alert, StyleSheet, View } from "react-native";
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  View,
+} from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
@@ -68,7 +74,11 @@ const AuthContent: FC<Props> = ({ isLogin, onAuthenticate }) => {
   }
 
   return (
-    <View style={styles.authContent}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.authContent}
+    >
+      {/* <View style={styles.authContent}> */}
       <AuthForm
         isLogin={isLogin}
         onSubmit={submitHandler}
@@ -79,7 +89,8 @@ const AuthContent: FC<Props> = ({ isLogin, onAuthenticate }) => {
           {isLogin ? "Create a new user" : "Log in instead"}
         </FlatButton>
       </View>
-    </View>
+      {/* </View> */}
+    </KeyboardAvoidingView>
   );
 };
 

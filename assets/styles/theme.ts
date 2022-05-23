@@ -13,5 +13,6 @@ export const DefaultTheme = {
   },
   fontFamily: {
     regularHeaders: "Georgia",
+    boldHeaders: "GeorgiaBold",
   },
 };

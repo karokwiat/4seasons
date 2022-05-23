@@ -20,7 +20,6 @@ type Props = {
 
 const InputItem: FC<Props> = ({ itemName, onPress, setItemName, setItem }) => {
   return (
-    // Uses a keyboard avoiding view which ensures the keyboard does not cover the items on screen
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.addItemWrapper}
