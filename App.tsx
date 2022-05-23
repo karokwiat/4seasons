@@ -18,7 +18,6 @@ import RecipeDetailScreen from "./screens/RecipeDetailScreen";
 import { store } from "./store/redux/store";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import ShoppingListScreen from "./screens/ShoppingListScreen";
-import { Lora_400Regular } from "@expo-google-fonts/lora";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator();
@@ -96,7 +95,7 @@ function RecipeStackNavigator() {
         headerTintColor: DefaultTheme.colors.black,
         contentStyle: { backgroundColor: DefaultTheme.colors.background },
         headerTitleStyle: {
-          fontFamily: "Georgia",
+          fontFamily: DefaultTheme.fontFamily.regularHeaders,
           fontSize: 20,
           fontWeight: "bold",
         },
