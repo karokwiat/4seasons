@@ -3,6 +3,7 @@ import {
   Alert,
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
   StyleSheet,
   View,
 } from "react-native";
@@ -74,29 +75,30 @@ const AuthContent: FC<Props> = ({ isLogin, onAuthenticate }) => {
   }
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.authContent}
-    >
-      {/* <View style={styles.authContent}> */}
-      <AuthForm
-        isLogin={isLogin}
-        onSubmit={submitHandler}
-        credentialsInvalid={credentialsInvalid}
-      />
-      <View style={styles.buttons}>
-        <FlatButton onPress={switchAuthModeHandler}>
-          {isLogin ? "Create a new user" : "Log in instead"}
-        </FlatButton>
+    <ScrollView style={styles.container}>
+      <View style={styles.authContent}>
+        <AuthForm
+          isLogin={isLogin}
+          onSubmit={submitHandler}
+          credentialsInvalid={credentialsInvalid}
+        />
+        <View style={styles.buttons}>
+          <FlatButton onPress={switchAuthModeHandler}>
+            {isLogin ? "Create a new user" : "Log in instead"}
+          </FlatButton>
+        </View>
       </View>
-      {/* </View> */}
-    </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
 export default AuthContent;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  formContainer: {},
   authContent: {
     marginTop: 180,
     marginHorizontal: 32,

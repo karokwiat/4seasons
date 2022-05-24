@@ -13,10 +13,9 @@ export default Subtitle;
 
 const styles = StyleSheet.create({
   subtitle: {
-    fontFamily: DefaultTheme.fontFamily.regularHeaders,
+    fontFamily: DefaultTheme.fontFamily.boldHeaders,
     color: DefaultTheme.colors.black,
     fontSize: 18,
-    fontWeight: "bold",
     textAlign: "left",
   },
   subtitleContainer: {

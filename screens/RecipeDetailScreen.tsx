@@ -7,7 +7,6 @@ import { useQueryClient } from "react-query";
 import IconButton from "../components/UI/IconButton";
 import List from "../components/Recipes/RecipeDetail/List";
 import Subtitle from "../components/Recipes/RecipeDetail/Subtitle";
-import RecipeDetails from "../components/Recipes/RecipeDetails";
 import { MEALS } from "../data/dummy-data";
 import { addFavorite, removeFavorite } from "../store/redux/favorites";
 import { RootStackParamList } from "../types/RootStackParams";
@@ -71,15 +70,18 @@ function RecipeDetailScreen({ route, navigation }: Props) {
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{selectedMeal.title}</Text>
       </View>
-      <RecipeDetails
-        duration={selectedMeal.duration}
-        complexity={selectedMeal.complexity}
-        affordability={selectedMeal.affordability}
-        textStyle={styles.detailText}
-      />
+      <View style={styles.authorContainer}>
+        <Text style={styles.authorLink}>Author: {selectedMeal.author}</Text>
+      </View>
       <View style={styles.listOuterContainer}>
         <View style={styles.listContainer}>
-          <Subtitle>Ingredients</Subtitle>
+          <View style={styles.subtitleContainer}>
+            <Subtitle>Ingredients</Subtitle>
+            <View style={styles.servingsContainer}>
+              <Text style={styles.servings}>{selectedMeal.serving}</Text>
+              <Text style={styles.text}>servings</Text>
+            </View>
+          </View>
           <List
             data={selectedMeal.ingredients}
             icon="add-circle"
@@ -106,20 +108,47 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   title: {
-    fontWeight: "bold",
     fontSize: 24,
     margin: 8,
     textAlign: "center",
     color: DefaultTheme.colors.black,
-    fontFamily: DefaultTheme.fontFamily.regularHeaders,
-  },
-  detailText: {
-    color: "white",
+    fontFamily: DefaultTheme.fontFamily.boldHeaders,
   },
   listOuterContainer: {
     alignItems: "center",
+    paddingTop: 25,
   },
   listContainer: {
     width: "90%",
+  },
+  subtitleContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  servingsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  servings: {
+    color: DefaultTheme.colors.black,
+    fontFamily: DefaultTheme.fontFamily.boldHeaders,
+    fontSize: 18,
+    textAlign: "left",
+    paddingTop: 8,
+    paddingRight: 5,
+  },
+  text: {
+    color: DefaultTheme.colors.black,
+    paddingTop: 12,
+    paddingRight: 15,
+  },
+  authorContainer: {
+    width: "100%",
+    height: 25,
+    paddingTop: 8,
+  },
+  authorLink: {
+    textAlign: "center",
+    color: DefaultTheme.colors.linkGrey,
   },
 });

@@ -8,6 +8,7 @@ class Meal {
     public complexity: string,
     public imageUrl: string,
     public duration: number,
+    public serving: number,
     public ingredients: string[],
     public steps: string[],
     public isGlutenFree: boolean,

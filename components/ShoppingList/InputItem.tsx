@@ -20,7 +20,7 @@ type Props = {
 const InputItem: FC<Props> = ({ itemName, onPress, setItemName }) => {
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
       style={styles.addItemWrapper}
     >
       <TextInput

@@ -1,14 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
 
-function RecipeDetails({
-  duration,
-  complexity,
-  affordability,
-  style,
-  textStyle,
-}) {
+function RecipeDetails({ duration, complexity, affordability, textStyle }) {
   return (
-    <View style={[styles.details, style]}>
+    <View style={styles.details}>
       <Text style={[styles.detailItem, textStyle]}>{duration}m</Text>
       <Text style={[styles.detailItem, textStyle]}>
         {complexity.toUpperCase()}

@@ -27,6 +27,7 @@ export const MEALS = [
     "simple",
     "https://www.rozkoszny.pl/wp-content/uploads/2020/06/DSC07347-%C5%9Aredni.jpg",
     10,
+    4,
     [
       "1 egg",
       "1 egg yolk",
@@ -65,6 +66,7 @@ export const MEALS = [
     "simple",
     "https://www.rozkoszny.pl/wp-content/uploads/2020/05/DSC06294-%C5%9Aredni.jpg.webp",
     60,
+    12,
     [
       "1 ¾ cups (230 g) all-purpose flour",
       "½ teaspoon baking powder",
@@ -110,6 +112,7 @@ export const MEALS = [
     "simple",
     "https://www.rozkoszny.pl/wp-content/uploads/2020/06/DSC07307-%C5%9Aredni.jpg",
     30,
+    2,
     [
       "2 large eggs, separated",
       "⅓ cup (50 g) all-purpose flour",
