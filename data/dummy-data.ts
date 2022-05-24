@@ -1,26 +1,17 @@
 import Category from "../models/category";
-import Meal from "../models/meal";
+import Recipe from "../models/recipe";
 
 export const CATEGORIES = [
-  new Category("c1", "Italian", "#f5428d"),
-  new Category("c2", "Quick & Easy", "#f54242"),
-  new Category("c3", "Hamburgers", "#f5a442"),
-  new Category("c4", "German", "#f5d142"),
-  new Category("c5", "Light & Lovely", "#368dff"),
-  new Category("c6", "Exotic", "#41d95d"),
-  new Category("c7", "Breakfast", "#9eecff"),
-  new Category("c8", "Asian", "#b9ffb0"),
-  new Category("c9", "French", "#ffc7ff"),
-  new Category("c10", "Summer", "#47fced"),
-  new Category("c11", "Dessert", "#49fced"),
+  new Category("c1", "Quick & Easy"),
+  new Category("c2", "Dessert"),
 ];
 
 console.log(CATEGORIES);
 
-export const MEALS = [
-  new Meal(
+export const RECIPES = [
+  new Recipe(
     "m1",
-    ["c2"],
+    ["c1"],
     "Asparagus with Miso Mayo and Sesame",
     "https://www.rozkoszny.pl/en/",
     "affordable",
@@ -57,9 +48,9 @@ export const MEALS = [
     true
   ),
 
-  new Meal(
+  new Recipe(
     "m2",
-    ["c11"],
+    ["c2"],
     "Rhubarb-Thyme Crumb Cake",
     "https://www.rozkoszny.pl/en/",
     "affordable",
@@ -103,9 +94,9 @@ export const MEALS = [
     false
   ),
 
-  new Meal(
+  new Recipe(
     "m3",
-    ["c11"],
+    ["c2"],
     "Buttermilk Omelette with Macerated Strawberries",
     "https://www.rozkoszny.pl/en/",
     "affordable",

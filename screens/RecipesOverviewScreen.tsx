@@ -1,8 +1,8 @@
 import RecipesList from "../components/Recipes/RecipesList/RecipesList";
-import { MEALS } from "../data/dummy-data";
+import { RECIPES } from "../data/dummy-data";
 
 function RecipesOverviewScreen() {
-  return <RecipesList items={MEALS} />;
+  return <RecipesList items={RECIPES} />;
 }
 
 export default RecipesOverviewScreen;

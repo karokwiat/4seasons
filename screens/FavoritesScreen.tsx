@@ -3,16 +3,16 @@ import { useSelector } from "react-redux";
 import { DefaultTheme } from "../assets/styles/theme";
 
 import RecipesList from "../components/Recipes/RecipesList/RecipesList";
-import { MEALS } from "../data/dummy-data";
+import { RECIPES } from "../data/dummy-data";
 
 function FavoritesScreen() {
-  const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids);
+  const favoriteRecipeIds = useSelector((state) => state.favoriteRecipes.ids);
 
-  const favoriteMeals = MEALS.filter((meal) =>
-    favoriteMealIds.includes(meal.id)
+  const favoriteRecipes = RECIPES.filter((recipe) =>
+    favoriteRecipeIds.includes(recipe.id)
   );
 
-  if (favoriteMeals.length === 0) {
+  if (favoriteRecipes.length === 0) {
     return (
       <View style={styles.rootContainer}>
         <Text style={styles.text}>You have no favorite recipes yet.</Text>
@@ -20,7 +20,7 @@ function FavoritesScreen() {
     );
   }
 
-  return <RecipesList items={favoriteMeals} />;
+  return <RecipesList items={favoriteRecipes} />;
 }
 
 export default FavoritesScreen;

@@ -1,4 +1,4 @@
-class Meal {
+class Recipe {
   constructor(
     public id: string,
     public categoryIds: string[],
@@ -18,7 +18,7 @@ class Meal {
   ) {}
 }
 
-// class Meal {
+// class Recipe {
 //   constructor(
 //     public id: string,
 //     public categoryIds: string[],
@@ -39,4 +39,4 @@ class Meal {
 //   ) {}
 // }
 
-export default Meal;
+export default Recipe;

@@ -8,31 +8,21 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import RecipeDetails from "../RecipeDetails";
 import { DefaultTheme } from "../../../assets/styles/theme";
-import AppLoading from "expo-app-loading";
-import { useFonts } from "expo-font";
 
-function RecipeItem({
-  id,
-  title,
-  imageUrl,
-  duration,
-  complexity,
-  affordability,
-}) {
+function RecipeItem({ id, title, imageUrl, duration }) {
   const navigation = useNavigation();
 
   function selectRecipeItemHandler() {
     navigation.navigate("RecipeDetail", {
-      mealId: id,
+      recipeId: id,
     });
   }
 
   return (
     <View style={styles.recipeItem}>
       <Pressable
-        android_ripple={{ color: "#ccc" }}
+        android_ripple={{ color: DefaultTheme.colors.linkGrey }}
         style={({ pressed }) => (pressed ? styles.buttonPressed : null)}
         onPress={selectRecipeItemHandler}
       >

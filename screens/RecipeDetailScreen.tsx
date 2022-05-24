@@ -7,7 +7,7 @@ import { useQueryClient } from "react-query";
 import IconButton from "../components/UI/IconButton";
 import List from "../components/Recipes/RecipeDetail/List";
 import Subtitle from "../components/Recipes/RecipeDetail/Subtitle";
-import { MEALS } from "../data/dummy-data";
+import { RECIPES } from "../data/dummy-data";
 import { addFavorite, removeFavorite } from "../store/redux/favorites";
 import { RootStackParamList } from "../types/RootStackParams";
 import { DefaultTheme } from "../assets/styles/theme";
@@ -19,19 +19,19 @@ import ListSteps from "../components/Recipes/RecipeDetail/ListSteps";
 type Props = NativeStackScreenProps<RootStackParamList, "Favorites">;
 
 function RecipeDetailScreen({ route, navigation }: Props) {
-  const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids);
+  const favoriteRecipeId = useSelector((state) => state.favoriteRecipes.ids);
   const dispatch = useDispatch();
 
-  const mealId = route.params.mealId;
-  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+  const recipeId = route.params.recipeId;
+  const selectedRecipe = RECIPES.find((recipe) => recipe.id === recipeId);
 
-  const mealIsFavorite = favoriteMealIds.includes(mealId);
+  const recipeIsFavorite = favoriteRecipeId.includes(recipeId);
 
   const changeFavoriteStatusHandler = () => {
-    if (mealIsFavorite) {
-      dispatch(removeFavorite({ id: mealId }));
+    if (recipeIsFavorite) {
+      dispatch(removeFavorite({ id: recipeId }));
     } else {
-      dispatch(addFavorite({ id: mealId }));
+      dispatch(addFavorite({ id: recipeId }));
     }
   };
 
@@ -40,7 +40,7 @@ function RecipeDetailScreen({ route, navigation }: Props) {
       headerRight: () => {
         return (
           <IconButton
-            icon={mealIsFavorite ? "bookmark" : "bookmark-outline"}
+            icon={recipeIsFavorite ? "bookmark" : "bookmark-outline"}
             color="black"
             onPress={changeFavoriteStatusHandler}
             size={24}
@@ -66,29 +66,29 @@ function RecipeDetailScreen({ route, navigation }: Props) {
 
   return (
     <ScrollView style={styles.rootContainer}>
-      <Image style={styles.image} source={{ uri: selectedMeal.imageUrl }} />
+      <Image style={styles.image} source={{ uri: selectedRecipe.imageUrl }} />
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>{selectedMeal.title}</Text>
+        <Text style={styles.title}>{selectedRecipe.title}</Text>
       </View>
       <View style={styles.authorContainer}>
-        <Text style={styles.authorLink}>Author: {selectedMeal.author}</Text>
+        <Text style={styles.authorLink}>Author: {selectedRecipe.author}</Text>
       </View>
       <View style={styles.listOuterContainer}>
         <View style={styles.listContainer}>
           <View style={styles.subtitleContainer}>
             <Subtitle>Ingredients</Subtitle>
             <View style={styles.servingsContainer}>
-              <Text style={styles.servings}>{selectedMeal.serving}</Text>
+              <Text style={styles.servings}>{selectedRecipe.serving}</Text>
               <Text style={styles.text}>servings</Text>
             </View>
           </View>
           <List
-            data={selectedMeal.ingredients}
+            data={selectedRecipe.ingredients}
             icon="add-circle"
             onPress={handleAddIngredient}
           />
           <Subtitle>Steps</Subtitle>
-          <ListSteps data={selectedMeal.steps} icon="checkmark" />
+          <ListSteps data={selectedRecipe.steps} icon="checkmark" />
         </View>
       </View>
     </ScrollView>

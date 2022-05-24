@@ -42,7 +42,7 @@ function RecipesStackNavigator() {
         name="RecipeDetail"
         component={RecipeDetailScreen}
         options={{
-          title: "About the Meal",
+          title: "Let's cook it!",
           headerBackTitleVisible: false,
         }}
       />
