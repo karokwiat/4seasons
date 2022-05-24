@@ -1,1 +1,1 @@
-- React Native, React Navigation v6, TypeScript, Firebase
+- React Native, React Navigation v6, React Context, React Query, Redux Toolkit, TypeScript, Firebase, Firestore
