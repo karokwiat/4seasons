@@ -8,32 +8,32 @@ type Props = {
 
 const Item: FC<Props> = ({ text }) => {
   return (
-    <View style={styles.item}>
-      <View style={styles.itemLeft}>
+    <View style={styles.itemContainer}>
+      <View style={styles.item}>
         <View style={styles.square}></View>
         <Text style={styles.itemText}>{text}</Text>
       </View>
-      {/* <View style={styles.circular}></View> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  item: {
-    backgroundColor: DefaultTheme.colors.background,
-    borderRadius: 60,
-    borderColor: DefaultTheme.colors.borderGrey,
-    borderWidth: 1,
-    padding: 15,
+  itemContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 10,
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    marginVertical: 4,
+    marginHorizontal: 12,
+    backgroundColor: DefaultTheme.colors.lightGrey,
   },
-  itemLeft: {
+  item: {
     flexDirection: "row",
     alignItems: "center",
     flexWrap: "wrap",
+    padding: 8,
   },
   square: {
     width: 12,
@@ -44,14 +44,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   itemText: {
-    maxWidth: "80%",
-  },
-  circular: {
-    width: 12,
-    height: 12,
-    borderColor: DefaultTheme.colors.primary,
-    borderWidth: 2,
-    borderRadius: 5,
+    maxWidth: "90%",
   },
 });
 

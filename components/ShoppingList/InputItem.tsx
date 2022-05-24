@@ -13,12 +13,11 @@ import { ShoppingItem } from "../../types/ShoppingItem";
 
 type Props = {
   itemName: string;
-  onPress: () => void;
+  onPress: (itemName: string) => void;
   setItemName: (itemName: string) => void;
-  setItem: (item: ShoppingItem) => void;
 };
 
-const InputItem: FC<Props> = ({ itemName, onPress, setItemName, setItem }) => {
+const InputItem: FC<Props> = ({ itemName, onPress, setItemName }) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -30,11 +29,9 @@ const InputItem: FC<Props> = ({ itemName, onPress, setItemName, setItem }) => {
         value={itemName}
         onChangeText={(text) => {
           setItemName(text);
-          const newItem = { item: text };
-          setItem(newItem);
         }}
       />
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={() => onPress(itemName)}>
         <View style={styles.addWrapper}>
           <Text style={styles.addText}>+</Text>
         </View>
@@ -46,7 +43,7 @@ const InputItem: FC<Props> = ({ itemName, onPress, setItemName, setItem }) => {
 const styles = StyleSheet.create({
   addItemWrapper: {
     position: "absolute",
-    bottom: 30,
+    bottom: 25,
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",
@@ -68,8 +65,6 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     justifyContent: "center",
     alignItems: "center",
-    // borderColor: DefaultTheme.colors.borderGrey,
-    // borderWidth: 1,
   },
   addText: {
     color: DefaultTheme.colors.background,

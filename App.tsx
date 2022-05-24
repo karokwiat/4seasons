@@ -4,11 +4,14 @@ import * as SecureStore from "expo-secure-store";
 import { Provider } from "react-redux";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import AuthContextProvider, { AuthContext } from "./store/context/auth-context";
 import { store } from "./store/redux/store";
 import AuthStackNavigator from "./components/Navigation/AuthStackNavigator";
 import AuthenticatedStackNavigator from "./components/Navigation/AuthenticatedStackNavigator";
+
+const queryClient = new QueryClient();
 
 function Navigation() {
   const authCtx = useContext(AuthContext);
@@ -59,7 +62,9 @@ export default function App() {
   return (
     <AuthContextProvider>
       <Provider store={store}>
-        <Root />
+        <QueryClientProvider client={queryClient}>
+          <Root />
+        </QueryClientProvider>
       </Provider>
     </AuthContextProvider>
   );

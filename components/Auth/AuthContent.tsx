@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     shadowColor: DefaultTheme.colors.black,
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.2,
-    shadowRadius: 10,
+    shadowRadius: 2,
   },
   buttons: {
     marginTop: 8,

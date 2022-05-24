@@ -1,7 +1,8 @@
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { useQueryClient } from "react-query";
 
 import IconButton from "../components/UI/IconButton";
 import List from "../components/Recipes/RecipeDetail/List";
@@ -11,6 +12,10 @@ import { MEALS } from "../data/dummy-data";
 import { addFavorite, removeFavorite } from "../store/redux/favorites";
 import { RootStackParamList } from "../types/RootStackParams";
 import { DefaultTheme } from "../assets/styles/theme";
+import { usePostShoppingItem } from "../util/http";
+import { ShoppingItem } from "../types/ShoppingItem";
+import { AuthContext } from "../store/context/auth-context";
+import ListSteps from "../components/Recipes/RecipeDetail/ListSteps";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Favorites">;
 
@@ -46,12 +51,19 @@ function RecipeDetailScreen({ route, navigation }: Props) {
     });
   }, [navigation, changeFavoriteStatusHandler]);
 
-  // let IngredientAddedToTheShoppingList = false;
+  const queryClient = useQueryClient();
 
-  // const changeIngredientStatus = () => {
-  //   IngredientAddedToTheShoppingList = !IngredientAddedToTheShoppingList;
-  //   console.log(IngredientAddedToTheShoppingList);
-  // };
+  const authCtx = useContext(AuthContext);
+  const token: string = authCtx.token;
+
+  const { mutate: createShoppingItem } = usePostShoppingItem(token);
+
+  const handleAddIngredient = (ingredient: string) => {
+    const shoppingItem: ShoppingItem = { item: ingredient };
+    createShoppingItem(shoppingItem, {
+      onSuccess: () => queryClient.invalidateQueries("shoppingItems"),
+    });
+  };
 
   return (
     <ScrollView style={styles.rootContainer}>
@@ -68,9 +80,13 @@ function RecipeDetailScreen({ route, navigation }: Props) {
       <View style={styles.listOuterContainer}>
         <View style={styles.listContainer}>
           <Subtitle>Ingredients</Subtitle>
-          <List data={selectedMeal.ingredients} icon="add-circle" />
+          <List
+            data={selectedMeal.ingredients}
+            icon="add-circle"
+            onPress={handleAddIngredient}
+          />
           <Subtitle>Steps</Subtitle>
-          <List data={selectedMeal.steps} icon="checkmark" />
+          <ListSteps data={selectedMeal.steps} icon="checkmark" />
         </View>
       </View>
     </ScrollView>
