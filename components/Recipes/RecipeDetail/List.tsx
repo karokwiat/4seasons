@@ -6,9 +6,10 @@ import IconButton from "../../UI/IconButton";
 type Props = {
   data: string[];
   icon: string;
+  onPress: (item: string) => void;
 };
 
-const List: FC<Props> = ({ data, icon }) => {
+const List: FC<Props> = ({ data, icon, onPress }) => {
   return data.map((dataPoint) => (
     <View key={dataPoint} style={styles.listItem}>
       <Text style={styles.itemText}>{dataPoint}</Text>
@@ -16,7 +17,7 @@ const List: FC<Props> = ({ data, icon }) => {
         icon={icon}
         color={DefaultTheme.colors.primary}
         size={24}
-        onPress={() => console.log("add me to the shopping list")}
+        onPress={() => onPress(dataPoint)}
       />
     </View>
   ));

@@ -1,77 +1,96 @@
-import React, { useState, useContext, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Keyboard,
-  ScrollView,
-} from "react-native";
+import React, { useState, useContext } from "react";
+import { StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
+import { useQueryClient } from "react-query";
+
 import { DefaultTheme } from "../assets/styles/theme";
 import InputItem from "../components/ShoppingList/InputItem";
-
 import Item from "../components/ShoppingList/Item";
 import {
-  deleteShoppingItem,
-  getShoppingItems,
-  storeShoppingItem,
+  useDeleteShoppingItem,
+  useGetShoppingItems,
+  usePostShoppingItem,
 } from "../util/http";
 import { AuthContext } from "../store/context/auth-context";
 import { ShoppingItem } from "../types/ShoppingItem";
 
 function ShoppingListScreen() {
   const [itemName, setItemName] = useState<string>();
-  const [item, setItem] = useState<ShoppingItem>();
-  const [itemsList, setItemsList] = useState<ShoppingItem[]>([]);
+  // const [item, setItem] = useState<ShoppingItem>();
+  // const [itemsList, setItemsList] = useState<ShoppingItem[]>([]);
 
   const authCtx = useContext(AuthContext);
   const token: string = authCtx.token;
 
-  useEffect(() => {
-    async function getSavedItems(token: string) {
-      const savedItems = await getShoppingItems(token);
-      console.log(savedItems);
-      setItemsList(savedItems);
-    }
-    getSavedItems(token);
-  }, [token]);
+  const queryClient = useQueryClient();
 
-  const handleAddItem = async () => {
-    Keyboard.dismiss();
-    const id = await storeShoppingItem(item, token);
-    const newItem: ShoppingItem = { ...item, id: id };
-    setItemsList([...itemsList, newItem]);
+  const { isLoading, isError, shoppingItems, error } =
+    useGetShoppingItems(token);
+
+  const { mutate: createShoppingItem } = usePostShoppingItem(token);
+  const { mutate: deleteShoppingItem } = useDeleteShoppingItem(token);
+
+  const handleAddItem = (itemName: string) => {
+    const shoppingItem: ShoppingItem = { item: itemName };
+    createShoppingItem(shoppingItem, {
+      onSuccess: () => queryClient.invalidateQueries("shoppingItems"),
+    });
     setItemName(null);
-    setItem(null);
   };
 
-  const completeItem = async (index: number, itemId: string) => {
-    let itemsCopy = [...itemsList];
-    itemsCopy.splice(index, 1);
-    setItemsList(itemsCopy);
-
-    await deleteShoppingItem(token, itemId);
+  const handleDeleteItem = (item: ShoppingItem) => {
+    const id: string = item.id;
+    deleteShoppingItem(id, {
+      onSuccess: () => queryClient.invalidateQueries("shoppingItems"),
+    });
   };
+
+  // useEffect(() => {
+  //   async function getSavedItems(token: string) {
+  //     const savedItems = await getShoppingItems(token);
+  //     console.log(savedItems);
+  //     setItemsList(savedItems);
+  //   }
+  //   getSavedItems(token);
+  // }, [token]);
+  // useEffect(() => {
+  //   setItemsList(shoppingItems);
+  // }, []);
+
+  // console.log(shoppingItems);
+
+  // const handleAddItem = async () => {
+  //   Keyboard.dismiss();
+  //   const id = await storeShoppingItem(item, token);
+  //   const newItem: ShoppingItem = { ...item, id: id };
+  //   setItemsList([...itemsList, newItem]);
+  //   setItemName(null);
+  //   setItem(null);
+  // };
+
+  // const completeItem = async (index: number, itemId: string) => {
+  //   let itemsCopy = [...itemsList];
+  //   itemsCopy.splice(index, 1);
+  //   setItemsList(itemsCopy);
+
+  //   await deleteShoppingItem(token, itemId);
+  // };
 
   return (
     <View style={styles.container}>
-      {/* Added this scroll view to enable scrolling when list gets longer than the page */}
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
         }}
         keyboardShouldPersistTaps="handled"
       >
-        {/* Items */}
         <View style={styles.itemsWrapper}>
-          {/* <Text style={styles.sectionTitle}>Shopping List</Text> */}
           <View style={styles.items}>
-            {itemsList.map((item, index) => {
+            {shoppingItems.map((item, index) => {
               return (
                 <TouchableOpacity
                   key={index}
                   onPress={() => {
-                    completeItem(index, item.id);
+                    handleDeleteItem(item);
                   }}
                 >
                   <Item text={item.item} />
@@ -81,13 +100,10 @@ function ShoppingListScreen() {
           </View>
         </View>
       </ScrollView>
-
-      {/* Add an item */}
       <InputItem
         itemName={itemName}
         onPress={handleAddItem}
         setItemName={setItemName}
-        setItem={setItem}
       />
     </View>
   );
@@ -101,8 +117,8 @@ const styles = StyleSheet.create({
     backgroundColor: DefaultTheme.colors.background,
   },
   itemsWrapper: {
-    // paddingTop: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
+    paddingBottom: 100,
   },
   sectionTitle: {
     fontSize: 24,

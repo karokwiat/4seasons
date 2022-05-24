@@ -60,6 +60,7 @@ function BottomTabNavigator() {
         name="ShoppingList"
         component={ShoppingListScreen}
         options={{
+          headerRightContainerStyle: { paddingRight: 16 },
           title: "Shopping List",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="list" color={color} size={size} />
