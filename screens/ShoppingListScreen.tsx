@@ -9,12 +9,12 @@ import {
   useDeleteShoppingItem,
   useGetShoppingItems,
   usePostShoppingItem,
-} from "../util/http";
+} from "../util/httpShoppings";
 import { AuthContext } from "../store/context/auth-context";
 import { ShoppingItem } from "../types/ShoppingItem";
 
 function ShoppingListScreen() {
-  const [itemName, setItemName] = useState<string>();
+  const [itemName, setItemName] = useState<string | null>();
   // const [item, setItem] = useState<ShoppingItem>();
   // const [itemsList, setItemsList] = useState<ShoppingItem[]>([]);
 
@@ -41,7 +41,7 @@ function ShoppingListScreen() {
   };
 
   const handleDeleteItem = (item: ShoppingItem) => {
-    const id: string = item.id;
+    const id: string = item.id!;
     deleteShoppingItem(id, {
       onSuccess: () => queryClient.invalidateQueries("shoppingItems"),
     });
@@ -104,7 +104,7 @@ function ShoppingListScreen() {
         </View>
       </ScrollView>
       <InputItem
-        itemName={itemName}
+        itemName={itemName!}
         onPress={handleAddItem}
         setItemName={setItemName}
       />
@@ -122,10 +122,6 @@ const styles = StyleSheet.create({
   itemsWrapper: {
     paddingHorizontal: 20,
     paddingBottom: 100,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
   },
   items: {
     marginTop: 20,

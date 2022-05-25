@@ -2,8 +2,6 @@ import axios from "axios";
 import { useQuery, useMutation } from "react-query";
 import { ShoppingItem } from "../types/ShoppingItem";
 
-// BACKEND_URL + "shoppings.json?auth=" + token
-// BACKEND_URL + `/shoppings/${id}.json?auth=` + token
 const BACKEND_URL =
   "https://cook-app-b49c2-default-rtdb.europe-west1.firebasedatabase.app/";
 

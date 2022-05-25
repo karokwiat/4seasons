@@ -22,7 +22,7 @@ import {
   useDeleteShoppingItem,
   useGetShoppingItems,
   usePostShoppingItem,
-} from "../util/http";
+} from "../util/httpShoppings";
 import { ShoppingItem } from "../types/ShoppingItem";
 import { AuthContext } from "../store/context/auth-context";
 import ListSteps from "../components/Recipes/RecipeDetail/ListSteps";
@@ -84,7 +84,7 @@ function RecipeDetailScreen({ route, navigation }: Props) {
   };
 
   const handleDeleteIngredient = (item: ShoppingItem) => {
-    const id: string = item.id;
+    const id: string = item.id!;
     deleteShoppingItem(id, {
       onSuccess: () => queryClient.invalidateQueries("shoppingItems"),
     });
@@ -107,38 +107,38 @@ function RecipeDetailScreen({ route, navigation }: Props) {
 
   useEffect(() => {
     const newShoppingItems = shoppingItems.filter((shoppingItem) =>
-      selectedRecipe.ingredients.includes(shoppingItem.item)
+      selectedRecipe!.ingredients.includes(shoppingItem.item)
     );
-    if (newShoppingItems.length >= selectedRecipe.ingredients.length) {
+    if (newShoppingItems.length >= selectedRecipe!.ingredients.length) {
       setAdded(true);
     }
   }, []);
 
   return (
     <ScrollView style={styles.rootContainer}>
-      <Image style={styles.image} source={{ uri: selectedRecipe.imageUrl }} />
+      <Image style={styles.image} source={{ uri: selectedRecipe!.imageUrl }} />
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>{selectedRecipe.title}</Text>
+        <Text style={styles.title}>{selectedRecipe!.title}</Text>
       </View>
       <View style={styles.authorContainer}>
-        <Text style={styles.authorLink}>Author: {selectedRecipe.author}</Text>
+        <Text style={styles.authorLink}>Author: {selectedRecipe!.author}</Text>
       </View>
       <View style={styles.listOuterContainer}>
         <View style={styles.listContainer}>
           <View style={styles.subtitleContainer}>
             <Subtitle>Ingredients</Subtitle>
             <View style={styles.servingsContainer}>
-              <Text style={styles.servings}>{selectedRecipe.serving}</Text>
+              <Text style={styles.servings}>{selectedRecipe!.serving}</Text>
               <Text style={styles.text}>servings</Text>
             </View>
           </View>
           <List
-            data={selectedRecipe.ingredients}
+            data={selectedRecipe!.ingredients}
             icon="add-circle"
             onPress={handleAddIngredient}
           />
           <TouchableOpacity
-            onPress={() => handleAddAllButton(selectedRecipe.ingredients)}
+            onPress={() => handleAddAllButton(selectedRecipe!.ingredients)}
           >
             <View style={styles.addAllContainer}>
               <Text style={styles.addAllText}>
@@ -149,7 +149,7 @@ function RecipeDetailScreen({ route, navigation }: Props) {
             </View>
           </TouchableOpacity>
           <Subtitle>Steps</Subtitle>
-          <ListSteps data={selectedRecipe.steps} icon="checkmark" />
+          <ListSteps data={selectedRecipe!.steps} icon="checkmark" />
         </View>
       </View>
     </ScrollView>
@@ -217,8 +217,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginHorizontal: 70,
     marginTop: 10,
-    backgroundColor: DefaultTheme.colors.primary,
-    width: 200,
+    backgroundColor: DefaultTheme.colors.lightBlue,
+    width: 250,
     borderRadius: 60,
   },
   addAllText: {
