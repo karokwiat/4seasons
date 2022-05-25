@@ -1,6 +1,7 @@
 export type AuthValue = {
   token: any;
+  userName: any;
   isAuthenticated: boolean;
-  authenticate: (token: string) => void;
+  authenticate: (data: { token: string; userName: string }) => void;
   logout: () => void;
 };

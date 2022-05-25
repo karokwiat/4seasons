@@ -22,7 +22,5 @@ const styles = StyleSheet.create({
     padding: 6,
     marginHorizontal: 12,
     marginVertical: 4,
-    // borderBottomColor: DefaultTheme.colors.borderGrey,
-    // borderBottomWidth: 1,
   },
 });

@@ -24,8 +24,12 @@ const LoginScreen: FC<Props> = () => {
   }) {
     setIsAuthenticating(true);
     try {
-      const token: string = await login(email, password);
-      authCtx.authenticate(token);
+      // const token: string = await login(email, password);
+      const userData: { token: string; userName: string } = await login(
+        email,
+        password
+      );
+      authCtx.authenticate(userData);
     } catch (error) {
       Alert.alert(
         "Authentication failed!",

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { DefaultTheme } from "../../assets/styles/theme";
 
 type Props = {
@@ -10,7 +10,7 @@ const Item: FC<Props> = ({ text }) => {
   return (
     <View style={styles.itemContainer}>
       <View style={styles.item}>
-        <View style={styles.square}></View>
+        <View style={styles.circle}></View>
         <Text style={styles.itemText}>{text}</Text>
       </View>
     </View>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     padding: 8,
   },
-  square: {
+  circle: {
     width: 12,
     height: 12,
     borderColor: DefaultTheme.colors.primary,

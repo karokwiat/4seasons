@@ -2,13 +2,18 @@ import axios from "axios";
 import { useQuery, useMutation } from "react-query";
 import { ShoppingItem } from "../types/ShoppingItem";
 
+// BACKEND_URL + "shoppings.json?auth=" + token
+// BACKEND_URL + `/shoppings/${id}.json?auth=` + token
 const BACKEND_URL =
   "https://cook-app-b49c2-default-rtdb.europe-west1.firebasedatabase.app/";
 
-export const useGetShoppingItems = (token: string) => {
+export const useGetShoppingItems = (token: string, userName: string) => {
   const fetchShoppingItems = async () => {
-    return await axios.get(BACKEND_URL + "shoppings.json?auth=" + token);
+    return await axios.get(
+      `${BACKEND_URL}${userName}shoppings.json?auth=${token}`
+    );
   };
+
   const { isLoading, isError, data, error } = useQuery(
     "shoppingItems",
     fetchShoppingItems
@@ -21,18 +26,20 @@ export const useGetShoppingItems = (token: string) => {
   return { isLoading, isError, shoppingItems, error };
 };
 
-export const usePostShoppingItem = (token: string) => {
+export const usePostShoppingItem = (token: string, userName: string) => {
   return useMutation((newShoppingItem: ShoppingItem) => {
     return axios.post(
-      BACKEND_URL + "shoppings.json?auth=" + token,
+      `${BACKEND_URL}${userName}shoppings.json?auth=${token}`,
       newShoppingItem
     );
   });
 };
 
-export const useDeleteShoppingItem = (token: string) => {
+export const useDeleteShoppingItem = (token: string, userName: string) => {
   return useMutation((id: string) => {
-    return axios.delete(BACKEND_URL + `/shoppings/${id}.json?auth=` + token);
+    return axios.delete(
+      `${BACKEND_URL}${userName}shoppings/${id}.json?auth=${token}`
+    );
   });
 };
 

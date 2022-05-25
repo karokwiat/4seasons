@@ -5,26 +5,33 @@ import { AuthValue } from "../../types/AuthValue";
 
 export const AuthContext = createContext({
   token: "",
+  userName: "",
   isAuthenticated: false,
-  authenticate: (token: string) => {},
+  authenticate: (data: { token: string; userName: string }) => {},
   logout: () => {},
 });
 
 function AuthContextProvider({ children }: { children: React.ReactNode }) {
   const [authToken, setAuthToken] = useState<string | null>();
+  const [userName, setUserName] = useState<string | null>();
 
-  function authenticate(token: string) {
-    setAuthToken(token);
-    SecureStore.setItemAsync("token", token);
+  function authenticate(data: { token: string; userName: string }) {
+    setAuthToken(data.token);
+    setUserName(data.userName);
+    SecureStore.setItemAsync("token", data.token);
+    SecureStore.setItemAsync("userName", data.userName);
   }
 
   function logout() {
     setAuthToken(null);
+    setUserName(null);
     SecureStore.deleteItemAsync("token");
+    SecureStore.deleteItemAsync("userName");
   }
 
   const value: AuthValue = {
     token: authToken,
+    userName: userName,
     isAuthenticated: !!authToken,
     authenticate: authenticate,
     logout: logout,

@@ -32,9 +32,10 @@ function Root() {
   useEffect(() => {
     async function fetchToken() {
       const storedToken = await SecureStore.getItemAsync("token");
+      const storedName = await SecureStore.getItemAsync("userName");
 
-      if (storedToken) {
-        authCtx.authenticate(storedToken);
+      if (storedToken && storedName) {
+        authCtx.authenticate({ token: storedToken, userName: storedName });
       }
 
       setIsTryingLogin(false);

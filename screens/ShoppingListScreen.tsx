@@ -20,14 +20,17 @@ function ShoppingListScreen() {
 
   const authCtx = useContext(AuthContext);
   const token: string = authCtx.token;
+  const userName: string = authCtx.userName;
 
   const queryClient = useQueryClient();
 
-  const { isLoading, isError, shoppingItems, error } =
-    useGetShoppingItems(token);
+  const { isLoading, isError, shoppingItems, error } = useGetShoppingItems(
+    token,
+    userName
+  );
 
-  const { mutate: createShoppingItem } = usePostShoppingItem(token);
-  const { mutate: deleteShoppingItem } = useDeleteShoppingItem(token);
+  const { mutate: createShoppingItem } = usePostShoppingItem(token, userName);
+  const { mutate: deleteShoppingItem } = useDeleteShoppingItem(token, userName);
 
   const handleAddItem = (itemName: string) => {
     const shoppingItem: ShoppingItem = { item: itemName };

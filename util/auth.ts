@@ -12,9 +12,16 @@ async function authenticate(mode: string, email: string, password: string) {
     returnSecureToken: true,
   });
 
-  const token = response.data.idToken;
+  const userName = response.data.email
+    .replace(/[\W_]+/g, " ")
+    .replace(/\s/g, "");
 
-  return token;
+  const userData = {
+    token: response.data.idToken,
+    userName: userName,
+  };
+
+  return userData;
 }
 
 export function createUser(email: string, password: string) {

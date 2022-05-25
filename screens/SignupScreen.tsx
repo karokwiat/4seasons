@@ -24,8 +24,13 @@ const SingupScreen: FC<Props> = () => {
   }) {
     setIsAuthenticating(true);
     try {
-      const token = await createUser(email, password);
-      authCtx.authenticate(token);
+      // const token = await createUser(email, password);
+      // authCtx.authenticate(token);
+      const userData: { token: string; userName: string } = await createUser(
+        email,
+        password
+      );
+      authCtx.authenticate(userData);
     } catch (error) {
       Alert.alert(
         "Authentication failed",
