@@ -4,6 +4,7 @@ import Recipe from "../models/recipe";
 export const CATEGORIES = [
   new Category("c1", "Quick & Easy"),
   new Category("c2", "Dessert"),
+  new Category("c3", "Salads"),
 ];
 
 console.log(CATEGORIES);
@@ -125,5 +126,46 @@ export const RECIPES = [
     false,
     true,
     false
+  ),
+
+  new Recipe(
+    "m4",
+    ["c3"],
+    "Sałatka z pieczonej ciecierzycy z suszonymi pomidorami",
+    "https://najlepszesalatki.pl/",
+    "affordable",
+    "simple",
+    "https://najlepszesalatki.pl/wp-content/uploads/2021/05/salatka-z-pieczonej-ciecierzycy-z-pomidorami-i-oliwkami-2.jpg",
+    50,
+    4,
+    [
+      "2 puszki ciecierzycy w zalewie",
+      "2 łyżki oliwy",
+      "1 łyżeczka mieszanki przypraw – mielony kumin, papryka i kurkuma",
+      "dwie garście nasion słonecznika",
+      "2 łyżki posiekanej dymki ( szczypiorku)",
+      "ok 10 suszonych pomidorów",
+      "100 g czarnych oliwek",
+      "4 łyżki oliwy ( może być z pomidorów)",
+      "1 ząbek czosnku",
+      "1 łyżka soku z cytryny",
+      "duża garść liści bazylii",
+      "1/2 łyżeczki miodu albo syropu z agawy",
+      "sól, pieprz do smaku",
+    ],
+    [
+      "Ciecierzycę opłukać i odsączyć na sitku a następnie wyłożyć na papier do pieczenia i wytrzeć, zostawić do przeschnięcia.",
+      "Przełożyć do miski, dodać oliwę i mieszankę przypraw, posolić, wymieszać.",
+      "Wyłożyć na blachę z papierem do pieczenia.",
+      "Piekarnik nagrzać do 190 stopni, wstawić ciecierzycę, piec 40 minut, mieszając co jakiś czas.",
+      "Pomidory i oliwki posiekać lekko, słonecznik uprażyć na suchej patelni.",
+      "Składniki sosu zmiksować.",
+      "Ciecierzycę przełożyć do miski, dodać pomidory, oliwki, słonecznik i posiekaną dymkę.",
+      "Przelać sos i dobrze wymieszać.",
+    ],
+    true,
+    true,
+    true,
+    true
   ),
 ];

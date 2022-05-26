@@ -10,17 +10,21 @@ type Props = {
 };
 
 const List: FC<Props> = ({ data, icon, onPress }) => {
-  return data.map((dataPoint) => (
-    <View key={dataPoint} style={styles.listItem}>
-      <Text style={styles.itemText}>{dataPoint}</Text>
-      <IconButton
-        icon={icon}
-        color={DefaultTheme.colors.primary}
-        size={24}
-        onPress={() => onPress(dataPoint)}
-      />
-    </View>
-  ));
+  return (
+    <>
+      {data.map((dataPoint) => (
+        <View key={dataPoint} style={styles.listItem}>
+          <Text style={styles.itemText}>{dataPoint}</Text>
+          <IconButton
+            icon={icon}
+            color={DefaultTheme.colors.primary}
+            size={24}
+            onPress={() => onPress(dataPoint)}
+          />
+        </View>
+      ))}
+    </>
+  );
 };
 
 export default List;

@@ -9,11 +9,15 @@ type Props = {
 };
 
 const ListSteps: FC<Props> = ({ data, icon }) => {
-  return data.map((step) => (
-    <View key={step} style={styles.listItem}>
-      <Step step={step} icon={icon} />
-    </View>
-  ));
+  return (
+    <>
+      {data.map((step) => (
+        <View key={step} style={styles.listItem}>
+          <Step step={step} icon={icon} />
+        </View>
+      ))}
+    </>
+  );
 };
 
 export default ListSteps;
