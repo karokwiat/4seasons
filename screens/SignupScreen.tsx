@@ -31,6 +31,13 @@ const SingupScreen: FC<Props> = () => {
         password
       );
       authCtx.authenticate(userData);
+
+      setTimeout(() => {
+        authCtx.logout();
+        Alert.alert("You're being logged out.", "Please login again.", [
+          { text: "OK", onPress: () => console.log("OK Pressed") },
+        ]);
+      }, 3600000);
     } catch (error) {
       Alert.alert(
         "Authentication failed",
