@@ -32,7 +32,9 @@ type Props = NativeStackScreenProps<RootStackParamList, "Favorites">;
 function RecipeDetailScreen({ route, navigation }: Props) {
   const [added, setAdded] = useState<boolean>(false);
 
-  const favoriteRecipeId = useSelector((state) => state.favoriteRecipes.ids);
+  const favoriteRecipeId = useSelector(
+    (state: IRootState) => state.favoriteRecipes.ids
+  );
   const dispatch = useDispatch();
 
   const recipeId = route.params.recipeId;
@@ -215,9 +217,10 @@ const styles = StyleSheet.create({
   addAllContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    marginHorizontal: 70,
+    marginHorizontal: 40,
     marginTop: 10,
-    backgroundColor: DefaultTheme.colors.lightBlue,
+    marginBottom: 30,
+    backgroundColor: DefaultTheme.colors.primary,
     width: 250,
     borderRadius: 60,
   },

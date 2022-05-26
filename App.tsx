@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import { QueryClient, QueryClientProvider } from "react-query";
+import * as SplashScreen from "expo-splash-screen";
 
 import AuthContextProvider, { AuthContext } from "./store/context/auth-context";
 import { store } from "./store/redux/store";
@@ -46,6 +47,8 @@ function Root() {
 
   if (isTryingLogin) {
     return <AppLoading />;
+    // SplashScreen.preventAutoHideAsync();
+    // SplashScreen.hideAsync();
   }
 
   return <Navigation />;
@@ -58,6 +61,8 @@ export default function App() {
   });
   if (!fontsLoaded) {
     return <AppLoading />;
+    // SplashScreen.preventAutoHideAsync();
+    // SplashScreen.hideAsync();
   }
 
   return (
