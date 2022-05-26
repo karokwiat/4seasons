@@ -4,7 +4,7 @@ import { Alert } from "react-native";
 import AuthContent from "../components/Auth/AuthContent";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
 import { AuthContext } from "../store/context/auth-context";
-import { login } from "../util/auth";
+import { login, refreshToken } from "../util/auth";
 
 type Props = {
   props?: string;
@@ -25,11 +25,20 @@ const LoginScreen: FC<Props> = () => {
     setIsAuthenticating(true);
     try {
       // const token: string = await login(email, password);
-      const userData: { token: string; userName: string } = await login(
-        email,
-        password
-      );
-      authCtx.authenticate(userData);
+      let userData: { token: string; userName: string; refreshToken: string } =
+        await login(email, password);
+      const data = { token: userData.token, userName: userData.userName };
+      authCtx.authenticate(data);
+
+      setTimeout(() => {
+        async function whatever() {
+          const newUserData = await refreshToken(userData);
+          userData.token = newUserData.token;
+          userData.refreshToken = newUserData.refreshToken;
+          console.log(userData);
+        }
+        whatever();
+      }, 60);
     } catch (error) {
       Alert.alert(
         "Authentication failed!",

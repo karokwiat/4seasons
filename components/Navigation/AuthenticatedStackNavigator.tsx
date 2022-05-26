@@ -10,7 +10,7 @@ function AuthenticatedStackNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: { backgroundColor: DefaultTheme.colors.header },
+        headerStyle: { backgroundColor: DefaultTheme.colors.background },
         headerTintColor: DefaultTheme.colors.black,
         contentStyle: { backgroundColor: DefaultTheme.colors.background },
       }}
