@@ -8,7 +8,7 @@ const BACKEND_URL =
 export const useGetShoppingItems = (token: string, userName: string) => {
   const fetchShoppingItems = async () => {
     return await axios.get(
-      `${BACKEND_URL}${userName}shoppings.json?auth=${token}`
+      `${BACKEND_URL}${userName}-shoppings.json?auth=${token}`
     );
   };
 
@@ -27,7 +27,7 @@ export const useGetShoppingItems = (token: string, userName: string) => {
 export const usePostShoppingItem = (token: string, userName: string) => {
   return useMutation((newShoppingItem: ShoppingItem) => {
     return axios.post(
-      `${BACKEND_URL}${userName}shoppings.json?auth=${token}`,
+      `${BACKEND_URL}${userName}-shoppings.json?auth=${token}`,
       newShoppingItem
     );
   });
@@ -36,7 +36,7 @@ export const usePostShoppingItem = (token: string, userName: string) => {
 export const useDeleteShoppingItem = (token: string, userName: string) => {
   return useMutation((id: string) => {
     return axios.delete(
-      `${BACKEND_URL}${userName}shoppings/${id}.json?auth=${token}`
+      `${BACKEND_URL}${userName}-shoppings/${id}.json?auth=${token}`
     );
   });
 };

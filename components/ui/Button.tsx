@@ -4,7 +4,7 @@ import { FC } from "react";
 import { DefaultTheme } from "../../assets/styles/theme";
 
 type Props = {
-  children: any;
+  children: React.ReactNode;
   onPress: () => void;
 };
 

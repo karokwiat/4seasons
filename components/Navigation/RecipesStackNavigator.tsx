@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { AuthContext } from "../../store/context/auth-context";
@@ -10,7 +10,7 @@ import RecipeDetailScreen from "../../screens/RecipeDetailScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-function RecipesStackNavigator() {
+const RecipesStackNavigator: FC = () => {
   const authCtx = useContext(AuthContext);
   return (
     <Stack.Navigator
@@ -48,6 +48,6 @@ function RecipesStackNavigator() {
       />
     </Stack.Navigator>
   );
-}
+};
 
 export default RecipesStackNavigator;

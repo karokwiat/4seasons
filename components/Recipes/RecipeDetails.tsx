@@ -1,6 +1,19 @@
-import { View, Text, StyleSheet } from "react-native";
+import { FC } from "react";
+import { View, Text, StyleSheet, StyleProp, TextStyle } from "react-native";
 
-function RecipeDetails({ duration, complexity, affordability, textStyle }) {
+type Props = {
+  duration: number;
+  complexity: string;
+  affordability: string;
+  textStyle: StyleProp<TextStyle>;
+};
+
+const RecipeDetails: FC<Props> = ({
+  duration,
+  complexity,
+  affordability,
+  textStyle,
+}) => {
   return (
     <View style={styles.details}>
       <Text style={[styles.detailItem, textStyle]}>{duration}m</Text>
@@ -12,7 +25,7 @@ function RecipeDetails({ duration, complexity, affordability, textStyle }) {
       </Text>
     </View>
   );
-}
+};
 
 export default RecipeDetails;
 

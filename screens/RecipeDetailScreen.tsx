@@ -1,4 +1,4 @@
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { FC, useContext, useEffect, useLayoutEffect, useState } from "react";
 import {
   View,
   Text,
@@ -26,14 +26,15 @@ import {
 import { ShoppingItem } from "../types/ShoppingItem";
 import { AuthContext } from "../store/context/auth-context";
 import ListSteps from "../components/Recipes/RecipeDetail/ListSteps";
+import { RootState } from "../store/redux/store";
 
-type Props = NativeStackScreenProps<RootStackParamList, "Favorites">;
+type Props = NativeStackScreenProps<RootStackParamList, "RecipeDetail">;
 
-function RecipeDetailScreen({ route, navigation }: Props) {
+const RecipeDetailScreen: FC<Props> = ({ route, navigation }) => {
   const [added, setAdded] = useState<boolean>(false);
 
   const favoriteRecipeId = useSelector(
-    (state: IRootState) => state.favoriteRecipes.ids
+    (state: RootState) => state.favoriteRecipes.ids
   );
   const dispatch = useDispatch();
 
@@ -156,7 +157,7 @@ function RecipeDetailScreen({ route, navigation }: Props) {
       </View>
     </ScrollView>
   );
-}
+};
 
 export default RecipeDetailScreen;
 

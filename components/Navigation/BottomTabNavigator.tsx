@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -12,7 +12,7 @@ import FavoriteStackNavigator from "./FavoritesStackNavigator";
 
 const BottomTab = createBottomTabNavigator();
 
-function BottomTabNavigator() {
+const BottomTabNavigator: FC = () => {
   const authCtx = useContext(AuthContext);
   return (
     <BottomTab.Navigator
@@ -76,6 +76,6 @@ function BottomTabNavigator() {
       />
     </BottomTab.Navigator>
   );
-}
+};
 
 export default BottomTabNavigator;

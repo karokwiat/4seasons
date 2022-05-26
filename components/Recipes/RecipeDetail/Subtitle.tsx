@@ -1,13 +1,18 @@
+import { FC } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { DefaultTheme } from "../../../assets/styles/theme";
 
-function Subtitle({ children }) {
+type Props = {
+  children: React.ReactNode;
+};
+
+const Subtitle: FC<Props> = ({ children }) => {
   return (
     <View style={styles.subtitleContainer}>
       <Text style={styles.subtitle}>{children}</Text>
     </View>
   );
-}
+};
 
 export default Subtitle;
 

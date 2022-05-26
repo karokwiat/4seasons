@@ -4,10 +4,11 @@ import LoginScreen from "../../screens/LoginScreen";
 import SignupScreen from "../../screens/SignupScreen";
 import { DefaultTheme } from "../../assets/styles/theme";
 import { RootStackParamList } from "../../types/RootStackParams";
+import { FC } from "react";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-function AuthStackNavigator() {
+const AuthStackNavigator: FC = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -19,6 +20,6 @@ function AuthStackNavigator() {
       <Stack.Screen name="Signup" component={SignupScreen} />
     </Stack.Navigator>
   );
-}
+};
 
 export default AuthStackNavigator;

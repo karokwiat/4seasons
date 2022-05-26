@@ -7,11 +7,22 @@ import {
   Platform,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import { DefaultTheme } from "../../../assets/styles/theme";
+import { FC } from "react";
+import { RootStackParamList } from "../../../types/RootStackParams";
 
-function RecipeItem({ id, title, imageUrl, duration }) {
-  const navigation = useNavigation();
+type Props = {
+  id: string;
+  title: string;
+  imageUrl: string;
+  duration: number;
+};
+
+const RecipeItem: FC<Props> = ({ id, title, imageUrl, duration }) => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   function selectRecipeItemHandler() {
     navigation.navigate("RecipeDetail", {
@@ -36,7 +47,7 @@ function RecipeItem({ id, title, imageUrl, duration }) {
       </Pressable>
     </View>
   );
-}
+};
 
 export default RecipeItem;
 

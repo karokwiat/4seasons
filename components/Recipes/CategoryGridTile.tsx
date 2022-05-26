@@ -1,6 +1,13 @@
+import { FC } from "react";
 import { Pressable, View, Text, StyleSheet, Platform } from "react-native";
 
-function CategoryGridTile({ title, color, onPress }) {
+type Props = {
+  title: string;
+  color: string;
+  onPress: () => void;
+};
+
+const CategoryGridTile: FC<Props> = ({ title, color, onPress }) => {
   return (
     <View style={styles.gridItem}>
       <Pressable
@@ -17,7 +24,7 @@ function CategoryGridTile({ title, color, onPress }) {
       </Pressable>
     </View>
   );
-}
+};
 
 export default CategoryGridTile;
 

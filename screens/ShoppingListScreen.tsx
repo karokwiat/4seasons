@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, FC } from "react";
 import { StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
 import { useQueryClient } from "react-query";
 
@@ -13,7 +13,7 @@ import {
 import { AuthContext } from "../store/context/auth-context";
 import { ShoppingItem } from "../types/ShoppingItem";
 
-function ShoppingListScreen() {
+const ShoppingListScreen: FC = () => {
   const [itemName, setItemName] = useState<string | null>();
   // const [item, setItem] = useState<ShoppingItem>();
   // const [itemsList, setItemsList] = useState<ShoppingItem[]>([]);
@@ -110,7 +110,7 @@ function ShoppingListScreen() {
       />
     </View>
   );
-}
+};
 
 export default ShoppingListScreen;
 

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { AuthContext } from "../../store/context/auth-context";
@@ -10,7 +10,7 @@ import FavoritesScreen from "../../screens/FavoritesScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-function FavoriteStackNavigator() {
+const FavoriteStackNavigator: FC = () => {
   const authCtx = useContext(AuthContext);
   return (
     <Stack.Navigator
@@ -47,6 +47,6 @@ function FavoriteStackNavigator() {
       />
     </Stack.Navigator>
   );
-}
+};
 
 export default FavoriteStackNavigator;

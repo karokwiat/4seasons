@@ -1,8 +1,9 @@
+import { FC } from "react";
 import RecipesList from "../components/Recipes/RecipesList/RecipesList";
 import { RECIPES } from "../data/dummy-data";
 
-function RecipesOverviewScreen() {
+const RecipesOverviewScreen: FC = () => {
   return <RecipesList items={RECIPES} />;
-}
+};
 
 export default RecipesOverviewScreen;

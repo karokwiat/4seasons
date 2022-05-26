@@ -1,12 +1,16 @@
+import { FC } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { DefaultTheme } from "../assets/styles/theme";
 
 import RecipesList from "../components/Recipes/RecipesList/RecipesList";
 import { RECIPES } from "../data/dummy-data";
+import { RootState } from "../store/redux/store";
 
-function FavoritesScreen() {
-  const favoriteRecipeIds = useSelector((state) => state.favoriteRecipes.ids);
+const FavoritesScreen: FC = () => {
+  const favoriteRecipeIds = useSelector(
+    (state: RootState) => state.favoriteRecipes.ids
+  );
 
   const favoriteRecipes = RECIPES.filter((recipe) =>
     favoriteRecipeIds.includes(recipe.id)
@@ -21,7 +25,7 @@ function FavoritesScreen() {
   }
 
   return <RecipesList items={favoriteRecipes} />;
-}
+};
 
 export default FavoritesScreen;
 

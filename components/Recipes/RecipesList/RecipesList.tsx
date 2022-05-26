@@ -1,12 +1,16 @@
-import { View, FlatList, StyleSheet } from "react-native";
-import { DefaultTheme } from "../../../assets/styles/theme";
+import { FC } from "react";
+import { View, FlatList, StyleSheet, ListRenderItem } from "react-native";
 
+import { DefaultTheme } from "../../../assets/styles/theme";
+import Recipe from "../../../models/recipe";
 import RecipeItem from "./RecipeItem";
 
-function RecipesList({ items }) {
-  function renderRecipeItem(itemData) {
-    const item = itemData.item;
+type Props = {
+  items: Recipe[];
+};
 
+const RecipesList: FC<Props> = ({ items }) => {
+  const renderRecipeItem: ListRenderItem<Recipe> = ({ item }) => {
     const recipeItemProps = {
       id: item.id,
       title: item.title,
@@ -16,7 +20,7 @@ function RecipesList({ items }) {
       duration: item.duration,
     };
     return <RecipeItem {...recipeItemProps} />;
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -27,7 +31,7 @@ function RecipesList({ items }) {
       />
     </View>
   );
-}
+};
 
 export default RecipesList;
 
